@@ -1,0 +1,4 @@
+;; extends
+[
+  (atom)
+] @property

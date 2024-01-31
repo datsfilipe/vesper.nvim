@@ -1,0 +1,1 @@
+require("my-theme").colorscheme()
