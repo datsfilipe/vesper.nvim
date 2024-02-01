@@ -11,7 +11,7 @@ local colors = {
   bgFloat = "#282828",
   bgOption = "#343434",
 
-	fg = mix("#FFFFFF", "#000000", math.abs(0.85)),
+	fg = mix("#FFFFFF", "#000000", math.abs(0.80)),
 	fgAlt = "#FEFEFE",
 	fgCommand = "#FEFEFE",
 	fgInactive = "#65737E",
