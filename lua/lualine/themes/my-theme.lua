@@ -5,9 +5,9 @@ local theme = {}
 local bg = config.transparent and "NONE" or colors.bg
 
 theme.normal = {
-	a = { bg = colors.blue, fg = colors.bg, gui = "bold" },
-	b = { bg = bg, fg = colors.comment },
-	c = { bg = bg, fg = colors.bg },
+	a = { bg = colors.orange, fg = colors.bg, gui = "bold" },
+	b = { bg = bg, fg = colors.primary },
+	c = { bg = bg, fg = colors.primary },
 }
 
 theme.insert = {
@@ -16,17 +16,17 @@ theme.insert = {
 }
 
 theme.terminal = {
-	a = { bg = colors.green, fg = colors.bg, gui = "bold" },
+	a = { bg = colors.greenLight, fg = colors.bg, gui = "bold" },
 	b = { bg = bg, fg = colors.comment },
 }
 
 theme.command = {
-	a = { bg = colors.green, fg = colors.bg, gui = "bold" },
+	a = { bg = colors.greenLight, fg = colors.bg, gui = "bold" },
 	b = { bg = bg, fg = colors.comment },
 }
 
 theme.visual = {
-	a = { bg = colors.purple, fg = colors.bg, gui = "bold" },
+	a = { bg = colors.green, fg = colors.bg, gui = "bold" },
 	b = { bg = bg, fg = colors.comment },
 }
 

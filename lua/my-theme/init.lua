@@ -3,16 +3,16 @@ local config = require("my-theme.config")
 local utils = require("my-theme.utils")
 local bufferline = require("my-theme.integrations.bufferline")
 local cmp = require("my-theme.integrations.cmp")
-local theme = {}
+local theme = {} -- teste
 
 local function set_terminal_colors()
 	vim.g.terminal_color_0 = colors.bg
 	vim.g.terminal_color_1 = colors.red
 	vim.g.terminal_color_2 = colors.green
 	vim.g.terminal_color_3 = colors.yellowDark
-	vim.g.terminal_color_4 = colors.blue
+	vim.g.terminal_color_4 = colors.greenLight
 	vim.g.terminal_color_5 = colors.purple
-	vim.g.terminal_color_6 = colors.blueLight
+	vim.g.terminal_color_6 = colors.primary
 	vim.g.terminal_color_7 = colors.fg
 	vim.g.terminal_color_8 = colors.fgInactive
 	vim.g.terminal_color_9 = colors.redDark
@@ -30,21 +30,21 @@ local function set_groups()
 	local bg = config.transparent and "NONE" or colors.bg
 	local diff_add = utils.shade(colors.green, 0.5, colors.bg)
 	local diff_delete = utils.shade(colors.red, 0.5, colors.bg)
-	local diff_change = utils.shade(colors.blue, 0.5, colors.bg)
-	local diff_text = utils.shade(colors.yellowDark, 0.5, colors.bg)
+	local diff_change = utils.shade(colors.orange, 0.5, colors.bg)
+	local diff_text = utils.shade(colors.symbol, 0.5, colors.bg)
 
 	local groups = {
 		-- base
 		Normal = { fg = colors.fg, bg = bg },
 		LineNr = { fg = colors.fgLineNr },
-		ColorColumn = { bg = utils.shade(colors.blueLight, 0.5, colors.bg) },
+		ColorColumn = { bg = utils.shade(colors.primary, 0.5, colors.bg) },
 		Conceal = {},
 		Cursor = { fg = colors.bg, bg = colors.fg },
 		lCursor = { link = "Cursor" },
 		CursorIM = { link = "Cursor" },
 		CursorLine = { bg = colors.bgDarker },
 		CursorColumn = { link = "CursorLine" },
-		Directory = { fg = colors.blue },
+		Directory = { fg = colors.green },
 		DiffAdd = { bg = bg, fg = diff_add },
 		DiffChange = { bg = bg, fg = diff_change },
 		DiffDelete = { bg = bg, fg = diff_delete },
@@ -58,68 +58,69 @@ local function set_groups()
 		SignColumn = { link = "Normal" },
 		Folded = { fg = colors.fg, bg = colors.bgDarker },
 		FoldColumn = { link = "SignColumn" },
-		IncSearch = { bg = utils.mix(colors.blue, colors.bg, math.abs(0.30)), fg = colors.bg },
+		IncSearch = { bg = utils.shade(colors.orange, 0.90, colors.bg), fg = colors.bgDarker },
 		Substitute = { link = "IncSearch" },
 		CursorLineNr = { fg = colors.comment },
-		MatchParen = { fg = colors.red, bg = bg },
+		MatchParen = { fg = colors.primary, bg = bg },
+		MatchParen = { fg = colors.primary, bg = bg },
 		ModeMsg = { link = "Normal" },
 		MsgArea = { link = "Normal" },
 		-- MsgSeparator = {},
-		MoreMsg = { fg = colors.blue },
+		MoreMsg = { fg = colors.greenLight },
 		NonText = { fg = utils.shade(colors.bg, 0.30) },
 		NormalFloat = { bg = colors.bgFloat },
 		NormalNC = { link = "Normal" },
 		Pmenu = { link = "NormalFloat" },
 		PmenuSel = { bg = colors.bgOption },
-		PmenuSbar = { bg = utils.shade(colors.blue, 0.5, colors.bg) },
+		PmenuSbar = { bg = utils.shade(colors.greenLight, 0.5, colors.bg) },
 		PmenuThumb = { bg = utils.shade(colors.bg, 0.20) },
-		Question = { fg = colors.blue },
-		QuickFixLine = { fg = colors.blue },
+		Question = { fg = colors.greenLight },
+		QuickFixLine = { fg = colors.greenLight },
 		SpecialKey = { fg = colors.symbol },
 		StatusLine = { fg = colors.fg, bg = bg },
 		StatusLineNC = { fg = colors.fgInactive, bg = colors.bgDark },
 		TabLine = { bg = colors.bgDark, fg = colors.fgInactive },
 		TabLineFill = { link = "TabLine" },
 		TabLineSel = { bg = colors.bg, fg = colors.fgAlt },
-		Search = { bg = utils.shade(colors.orangeLight, 0.40, colors.bg) },
-		SpellBad = { undercurl = true, sp = colors.red },
-		SpellCap = { undercurl = true, sp = colors.blue },
+		Search = { link = "IncSearch" },
+		SpellBad = { undercurl = true, sp = colors.primary },
+		SpellCap = { undercurl = true, sp = colors.greenLight },
 		SpellLocal = { undercurl = true, sp = colors.purple },
 		SpellRare = { undercurl = true, sp = colors.orange },
-		Title = { fg = colors.blue },
-		Visual = { bg = utils.shade(colors.blue, 0.40, colors.bg) },
+		Title = { fg = colors.greenLight },
+		Visual = { bg = utils.shade(colors.bgDarker, 0.70) },
 		VisualNOS = { link = "Visual" },
 		WarningMsg = { fg = colors.orange },
 		Whitespace = { fg = colors.symbol },
 		WildMenu = { bg = colors.bgOption },
 		Comment = { fg = colors.comment, italic = config.italics.comments or false },
 
-		Constant = { fg = colors.red },
-		String = { fg = colors.orangeLight, italic = config.italics.strings or false },
-		Character = { fg = colors.orangeLight },
-		Number = { fg = colors.primary, bold = true },
-		Boolean = { fg = colors.blue },
+		Constant = { fg = colors.primary },
+		String = { fg = colors.green, italic = config.italics.strings or false },
+		Character = { fg = colors.green },
+		Number = { fg = colors.secondary, bold = true },
+		Boolean = { fg = colors.greenLight },
 		Float = { link = "Number" },
 
 		Identifier = { fg = colors.fg },
 		Function = { fg = colors.purple },
 		Method = { fg = colors.purple },
-		Property = { fg = colors.blue },
+		Property = { fg = colors.greenLight },
 		Field = { link = "Property" },
 		Parameter = { fg = colors.fg },
-		Statement = { fg = colors.red },
-		Conditional = { fg = colors.red },
+		Statement = { fg = colors.primary },
+		Conditional = { fg = colors.primary },
 		-- Repeat = {},
-		Label = { fg = colors.blue },
-		Operator = { fg = colors.red },
+		Label = { fg = colors.greenLight },
+		Operator = { fg = colors.primary },
 		Keyword = { link = "Statement", italic = config.italics.keywords or false },
-		Exception = { fg = colors.red },
+		Exception = { fg = colors.purple },
 
 		PreProc = { link = "Keyword" },
 		-- Include = {},
 		Define = { fg = colors.purple },
 		Macro = { link = "Define" },
-		PreCondit = { fg = colors.red },
+		PreCondit = { fg = colors.primary },
 
 		Type = { fg = colors.purple },
 		Struct = { link = "Type" },
@@ -133,7 +134,7 @@ local function set_groups()
 		Punctuation = { fg = colors.symbol },
 		Special = { fg = colors.symbol },
 
-		SpecialChar = { fg = colors.red },
+		SpecialChar = { fg = colors.orangeLight },
 		Tag = { fg = colors.orangeLight },
 		Delimiter = { fg = colors.symbol },
 		-- SpecialComment = {},
@@ -155,7 +156,7 @@ local function set_groups()
 
 		DiagnosticError = { link = "Error" },
 		DiagnosticWarn = { link = "WarningMsg" },
-		DiagnosticInfo = { fg = colors.blue },
+		DiagnosticInfo = { fg = colors.green },
 		DiagnosticHint = { fg = colors.yellowDark },
 		DiagnosticVirtualTextError = { link = "DiagnosticError" },
 		DiagnosticVirtualTextWarn = { link = "DiagnosticWarn" },
@@ -192,15 +193,15 @@ local function set_groups()
 		["@texcolors.strong"] = { link = "Bold" },
 		["@texcolors.italic"] = { link = "Italic" },
 		["@texcolors.title"] = { link = "Keyword" },
-		["@texcolors.uri"] = { fg = colors.blue, sp = colors.blue, underline = true },
+		["@texcolors.uri"] = { fg = colors.green, sp = colors.green, underline = true },
 		["@texcolors.underline"] = { link = "Underlined" },
 		["@symbol"] = { fg = colors.symbol },
 		["@texcolors.todo"] = { link = "Todo" },
 		["@comment"] = { link = "Comment" },
 		["@punctuation"] = { link = "Punctuation" },
-		["@punctuation.bracket"] = { fg = colors.yellowDark },
+		["@punctuation.bracket"] = { fg = colors.primary },
 		["@punctuation.delimiter"] = { link = "Delimiter" },
-		["@punctuation.separator.keyvalue"] = { fg = colors.red },
+		["@punctuation.separator.keyvalue"] = { fg = colors.green },
 
 		["@texcolors.diff.add"] = { fg = colors.green },
 		["@texcolors.diff.delete"] = { fg = colors.redDark },
@@ -211,8 +212,8 @@ local function set_groups()
 		-- ["@define"] = {},
 		-- ["@macro"] = {},
 		["@string"] = { link = "String" },
-		["@string.escape"] = { fg = utils.shade(colors.orangeLight, 0.45) },
-		["@string.special"] = { fg = utils.shade(colors.blue, 0.45) },
+		["@string.escape"] = { fg = utils.shade(colors.yellowDark, 0.45) },
+		["@string.special"] = { fg = utils.shade(colors.yellowDark, 0.45) },
 		-- ["@character"] = {},
 		-- ["@character.special"] = {},
 		["@number"] = { link = "Number" },
@@ -226,7 +227,7 @@ local function set_groups()
 		["@method"] = { link = "Function" },
 		["@field"] = { link = "Property" },
 		["@property"] = { link = "Property" },
-		["@constructor"] = { fg = colors.blue },
+		["@constructor"] = { fg = colors.primary },
 		-- ["@conditional"] = {},
 		-- ["@repeat"] = {},
 		["@label"] = { link = "Label" },
@@ -236,8 +237,8 @@ local function set_groups()
 		["@variable.builtin"] = { fg = colors.fg, italic = config.italics.variables or false },
 		["@type"] = { link = "Type" },
 		["@type.definition"] = { fg = colors.fg },
-		["@type.builtin"] = { fg = colors.blue },
-		["@type.qualifier"] = { fg = colors.blue },
+		["@type.builtin"] = { fg = colors.greenLight },
+		["@type.qualifier"] = { fg = colors.greenLight },
 		["@keyword"] = { link = "Keyword" },
 		-- ["@storageclass"] = {},
 		-- ["@structure"] = {},
@@ -252,7 +253,7 @@ local function set_groups()
 		["@attribute"] = { link = "Attribute" },
 		["@error"] = { link = "Error" },
 		["@warning"] = { link = "WarningMsg" },
-		["@info"] = { fg = colors.blue },
+		["@info"] = { fg = colors.green },
 
 		-- Specific languages
 		-- overrides
