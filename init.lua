@@ -62,13 +62,84 @@ require("lazy").setup({
 		"lewis6991/gitsigns.nvim",
 		"lukas-reineke/indent-blankline.nvim",
 		"nvim-lua/plenary.nvim",
-	},
+    {
+      "echasnovski/mini.hipatterns",
+      version = false,
+      event = 'VeryLazy',
+      config = function()
+        local hipatterns = require 'mini.hipatterns'
+
+        hipatterns.setup {
+          highlighters = {
+            hex_color = hipatterns.gen_highlighter.hex_color(),
+          }
+        }
+      end,
+    },
+    {
+      'nvim-treesitter/nvim-treesitter',
+      lazy = false,
+      config = function()
+        local ts = require 'nvim-treesitter.configs'
+
+        ts.setup {
+          highlight = {
+            enable = true,
+            disable = {},
+          },
+          indent = {
+            enable = true,
+          },
+          ensure_installed = {
+            'lua',
+            'vim',
+            'bash',
+            'javascript',
+            'typescript',
+            'tsx',
+            'html',
+            'css',
+            'json',
+            'go',
+            'rust',
+          },
+          autotag = {
+            enable = true,
+          },
+        }
+
+        local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+        parser_config.tsx.filetype_to_parsername = { 'javascript', 'typescript.tsx' }
+      end,
+      build = function()
+        local ts_update = require('nvim-treesitter.install').update { with_sync = true }
+        ts_update()
+      end,
+      dependencies = {
+        {
+          'nvim-treesitter/nvim-treesitter-context',
+          opts = {},
+        },
+        'nvim-treesitter/playground',
+      },
+    },
+    {
+      'nvim-lualine/lualine.nvim',
+      event = 'VimEnter',
+      dependencies = { 'nvim-tree/nvim-web-devicons' },
+      opts = {
+        options = {
+          icons_enabled = true,
+          colorscheme = "my-theme",
+        },
+      },
+    },
+  },
 })
 
 local theme = require("my-theme/init")
 
 theme.setup({
-	theme = "dark",
 	transparent = true,
 	italics = {
 		comments = false,
