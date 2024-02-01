@@ -1,3 +1,4 @@
+vim.opt.cursorline = true
 vim.opt.cmdheight = 1
 vim.opt.encoding = "utf-8"
 vim.scriptencoding = "utf-8"
@@ -41,6 +42,7 @@ vim.opt.backup = false
 vim.opt.undofile = true
 vim.opt.shell = "zsh"
 vim.opt.belloff = "all"
+vim.g.mapleader = ' '
 
 local lazypath = vim.fn.stdpath("data") .. "/development/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -59,8 +61,7 @@ require("lazy").setup({
 	root = vim.fn.stdpath("data") .. "/min/lazy",
 	spec = {
 		"nvim-telescope/telescope.nvim",
-		"lewis6991/gitsigns.nvim",
-		"lukas-reineke/indent-blankline.nvim",
+    { "lewis6991/gitsigns.nvim", opts = {} },
 		"nvim-lua/plenary.nvim",
     {
       "echasnovski/mini.hipatterns",
@@ -134,13 +135,38 @@ require("lazy").setup({
         },
       },
     },
+    {
+      'NeogitOrg/neogit',
+      cmd = 'Neogit',
+      dependencies = {
+        'nvim-lua/plenary.nvim',
+        'nvim-telescope/telescope.nvim',
+      },
+      opts = {},
+    },
   },
 })
+
+vim.keymap.set('i', '<C-c>', '<Esc>', opts)
+vim.keymap.set('n', '<leader>gg', ':Neogit<Return>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>e', ':Explore<Return><Return>', opts)
+vim.keymap.set('v', '<', '<gv', opts)
+vim.keymap.set('v', '>', '>gv', opts)
+vim.keymap.set('n', '>', ':tabnext<Return>', opts)
+vim.keymap.set('n', '<', ':tabprev<Return>', opts)
+local theme = require('telescope.themes').get_dropdown {}
+vim.keymap.set('n', ';f', function()
+  require 'telescope.builtin'.find_files(vim.tbl_deep_extend('force', {
+    prompt_prefix = '   ',
+    no_ignore = false,
+    hidden = true,
+  }, theme))
+end, opts)
 
 local theme = require("vesper/init")
 
 theme.setup({
-	transparent = true,
+	transparent = false,
 	italics = {
 		comments = false,
 		keywords = true,
