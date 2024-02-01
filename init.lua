@@ -130,14 +130,14 @@ require("lazy").setup({
       opts = {
         options = {
           icons_enabled = true,
-          colorscheme = "my-theme",
+          colorscheme = "vesper",
         },
       },
     },
   },
 })
 
-local theme = require("my-theme/init")
+local theme = require("vesper/init")
 
 theme.setup({
 	transparent = true,

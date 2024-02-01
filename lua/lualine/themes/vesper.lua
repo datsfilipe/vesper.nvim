@@ -1,5 +1,5 @@
-local colors = require("my-theme.colors")
-local config = require("my-theme.config")
+local colors = require("vesper.colors")
+local config = require("vesper.config")
 local theme = {}
 
 local bg = config.transparent and "NONE" or colors.bg

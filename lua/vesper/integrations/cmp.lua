@@ -1,4 +1,4 @@
-local colors = require("my-theme.colors")
+local colors = require("vesper.colors")
 
 local M = {}
 

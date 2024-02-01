@@ -1,5 +1,5 @@
-local config = require("my-theme.config")
-local mix = require("my-theme.utils").mix
+local config = require("vesper.config")
+local mix = require("vesper.utils").mix
 
 local colors = {
 	-- background colors
