@@ -7,7 +7,7 @@ function M.highlights(config)
 	return {
 		-- buffers
 		background = { bg = bg },
-		buffer_visible = { fg = colors.fgLineNr, bg = bg },
+		buffer_visible = { fg = colors.comment, bg = bg },
 		buffer_selected = { fg = colors.fg, bg = colors.bg },
 		-- duplicate
 		duplicate = { fg = colors.fg, bg = bg, italic = config.italics.bufferline or false },
@@ -26,7 +26,7 @@ function M.highlights(config)
 		tab_separator = { fg = colors.bg, bg = bg },
 		tab_separator_selected = { fg = colors.bg, bg = colors.bg },
 		-- close buttons
-		close_button = { fg = colors.fgLineNr, bg = bg },
+		close_button = { fg = colors.red, bg = bg },
 		close_button_visible = { fg = colors.red, bg = bg },
 		close_button_selected = { fg = colors.red, bg = colors.bg },
 		-- empty fill
