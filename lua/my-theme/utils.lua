@@ -27,19 +27,13 @@ end
 
 -- shade color (hex string, number, base) -> string (hex) @params color, value, base
 function M.shade(color, value, base)
-  if vim.o.background == 'light' then
-    if base == nil then
-      base = '#000000'
-    end
-
-    return M.mix(color, base, math.abs(value))
-  else
-    if base == nil then
-      base = '#ffffff'
-    end
+  if base == nil then
+    base = "#ffffff"
 
     return M.mix(color, base, math.abs(value))
   end
+
+  return M.mix(color, base, math.abs(value))
 end
 
 return M
