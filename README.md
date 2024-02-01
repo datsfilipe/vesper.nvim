@@ -1,6 +1,8 @@
 <div align="center">
 
-# My Theme
+# Vesper
+
+Port of the VS Code theme, [Vesper](https://github.com/raunofreiberg/vesper)
 
 <br/>
 <br/>
