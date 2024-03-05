@@ -43,7 +43,7 @@ require('vesper').setup({
         variables = true, -- Boolean: Italicizes variables
     },
     overrides = {}, -- A dictionary of group names, can be a function returning a dictionary or a table.
-  palette_overrides = {}
+    palette_overrides = {}
 })
 ```
 
