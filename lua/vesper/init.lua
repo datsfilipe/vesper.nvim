@@ -27,6 +27,10 @@ local function set_terminal_colors()
 end
 
 local function set_groups()
+	for color, hex in pairs(config.palette_overrides) do
+		colors[color] = hex
+	end
+
 	local bg = config.transparent and "NONE" or colors.bg
 	local diff_add = utils.shade(colors.green, 0.5, colors.bg)
 	local diff_delete = utils.shade(colors.red, 0.5, colors.bg)
@@ -279,10 +283,10 @@ local function set_groups()
 		["@lsp.typemod.function.readonly"] = { link = "@function" },
 	}
 
-  -- integrations
-  groups = vim.tbl_extend("force", groups, cmp.highlights())
+	-- integrations
+	groups = vim.tbl_extend("force", groups, cmp.highlights())
 
-  -- overrides
+	-- overrides
 	groups =
 		vim.tbl_extend("force", groups, type(config.overrides) == "function" and config.overrides() or config.overrides)
 

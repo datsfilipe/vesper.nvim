@@ -10,6 +10,7 @@ local config = {
 			bufferline = false,
 		},
 		overrides = {},
+		palette_overrides = {},
 	},
 }
 

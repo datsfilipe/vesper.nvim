@@ -7,7 +7,7 @@ Port of the VS Code theme, [Vesper](https://github.com/raunofreiberg/vesper)
 <br/>
 <br/>
 
-![preview](./assets/preview.png) 
+![preview](./assets/preview.png)
 
 <br/>
 <br/>
@@ -43,6 +43,7 @@ require('vesper').setup({
         variables = true, -- Boolean: Italicizes variables
     },
     overrides = {}, -- A dictionary of group names, can be a function returning a dictionary or a table.
+    palette_overrides = {}
 })
 ```
 
@@ -70,4 +71,4 @@ Take a look at the [Development Guide](./DEVELOPMENT_GUIDE.md)
 
 ## License
 
-[MIT License](LICENSE) 
+[MIT License](LICENSE)
