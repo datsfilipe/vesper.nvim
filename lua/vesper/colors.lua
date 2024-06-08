@@ -5,11 +5,11 @@ local colors = {
 	-- background colors
 	white = "#FFFFFF",
 	black = "#343434",
-  bg = "#101010",
-  bgDark = "#161616",
-  bgDarker = "#232323",
-  bgFloat = "#282828",
-  bgOption = "#343434",
+	bg = "#101010",
+	bgDark = "#161616",
+	bgDarker = "#232323",
+	bgFloat = "#282828",
+	bgOption = "#343434",
 
 	fg = mix("#FFFFFF", "#000000", math.abs(0.80)),
 	fgAlt = "#FEFEFE",
@@ -40,6 +40,12 @@ local colors = {
 	symbol = "#65737E",
 	secondary = "#FFFFFF",
 	terminalbrightblack = "#343434",
+
+	-- diagnostic colors
+	error = "#FF8080",
+	warn = "#FFC799",
+	info = "#99FFE4",
+	hint = "#65737E",
 }
 
 return colors
