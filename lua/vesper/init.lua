@@ -3,6 +3,7 @@ local config = require("vesper.config")
 local utils = require("vesper.utils")
 local bufferline = require("vesper.integrations.bufferline")
 local cmp = require("vesper.integrations.cmp")
+local telescope = require("vesper.integrations.telescope")
 local theme = {} -- teste
 
 local function set_terminal_colors()
@@ -266,8 +267,8 @@ local function set_groups()
 		["@error"] = { link = "Error" },
 		["@warning"] = { link = "WarningMsg" },
 		["@info"] = { fg = colors.green },
-    ["@markup.link.label"] = { underline = false },
-    ["@none"] = { fg = colors.white },
+		["@markup.link.label"] = { underline = false },
+		["@none"] = { fg = colors.white },
 
 		-- Specific languages
 		-- overrides
@@ -295,6 +296,7 @@ local function set_groups()
 
 	-- integrations
 	groups = vim.tbl_extend("force", groups, cmp.highlights())
+	groups = vim.tbl_extend("force", groups, telescope.highlights())
 
 	-- overrides
 	groups =
